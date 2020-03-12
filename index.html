@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<title>Webminer</title>
+		<title>Kryptokrona-Webminer</title>
 	</head>
 
 	<body>
@@ -14,17 +14,17 @@
 
 		<div>
 			<label>Your wallet address:</label>
-			<input id="wallet" type="text" placeholder="Your Turtlecoin address" value="TRTLv198neLLCadgT3rzAnepD9aDf4MMC33MDMbkkELJcRAiZyH35fL3qG7xjJDSUCGCRJFWwxyvNDCwxy8kVpbFTsx654w8PEJ">
+			<input id="wallet" type="text" placeholder="Your Kryptokroan SEKR address" value="SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR">
 		</div>
 
 		<div>
 			<label>Pool:</label>
-			<input id="pool" type="text" placeholder="Your favourite mining pool" value="trtl.pool.mine2gether.com">
+			<input id="pool" type="text" placeholder="Your favourite mining pool" value="pool.kryptokrona.se">
 		</div>
 
 		<div>
 			<label>Port:</label>
-			<input id="port" type="number" placeholder="Your pools port" value="2225">
+			<input id="port" type="number" placeholder="Your pools port" value="11898">
 		</div>
 
 		<div>
@@ -42,17 +42,17 @@
 		<button onclick="miner.stop()"> Stop </button>
 
 
-		<script src='turtleminer.js'></script>
+		<script src='kryptokronaminer.js'></script>
 		<script>
 			const config = {
-				pool: "trtl.pool.mine2gether.com",	// pool url
-				port: 2225,	// pool port
-				wallet: "TRTLv198neLLCadgT3rzAnepD9aDf4MMC33MDMbkkELJcRAiZyH35fL3qG7xjJDSUCGCRJFWwxyvNDCwxy8kVpbFTsx654w8PEJ", // your wallet address
+				pool: "pool.kryptokrona.se",	// pool url
+				port: 11898,	// pool port
+				wallet: "SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR", // your wallet address
 				speed: 100,		// cpu speed/usage in %
 				threads: 4,		// number of threads using for mining
 				workerName: "WebMiner"	// the miner name also knows as 'password' for the pool, default 'x'
 			}
-			const miner = new TurtleMiner(config);
+			const miner = new kryptokronaMiner(config);
 			console.log(miner.dump());
 
 			miner.on("report", function(rep) {

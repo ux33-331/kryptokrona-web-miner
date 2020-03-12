@@ -1,4 +1,4 @@
-class TurtleMiner {
+class kryptokronaMiner {
 	constructor(config) {
 		this.pool = "";
 		this.port = -1;
@@ -6,7 +6,7 @@ class TurtleMiner {
 		this.paymentId = "";
 		this.fixedDiff = -1;
 		this.speed = 0;
-		this.threads = 2;
+		this.threads = 4;
 		this.workerName = "x";
 		this.events = {
 			start: 	function(instance)		{ console.log(`[WM] Webminer started with ${instance.speed}% speed and ${instance.threads} threads...`)},
@@ -48,8 +48,8 @@ class TurtleMiner {
 			hashrate: -1
 		}
 		switch (this.pool) {
-			case "trtl.pool.mine2gether.com":
-				getA("https://trtl.mine2gether.com/api/stats_address?address="+this.wallet, (data) => {
+			case "pool.kryptokrona.se":
+				getA("http://pool.kryptokrona.seapi/stats_address?address="+this.wallet, (data) => {
 					data = JSON.parse(data);
 					rep.hashrate = data["charts"]["hashrate"]["worker-"+this.workerName].last()[1];
 					this.events.report(rep);
