@@ -3,9 +3,51 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Kryptokrona-Webminer</title>
+		<style>
+			body {
+				background: black;
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			button {
+				background: black;
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			
+			
+			/* body */
+		</style>
 	</head>
 
 	<body>
+		<div>
+			<label>Your wallet address:</label><br>
+			<input id="wallet" type="text" placeholder="Your Kryptokroan SEKR address" value="SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR">
+		</div>
+
+		<div>
+			<label>Pool:</label><br>
+			<input id="pool" type="text" placeholder="Your favourite mining pool" value="pool.kryptokrona.se">
+		</div>
+
+		<div>
+			<label>Port:</label><br>
+			<input id="port" type="number" placeholder="Your pools port" value="11898">
+		</div>
+
+		<div>
+			<label>Worker name:</label><br>
+			<input id="workerName" type="text" placeholder="Your worker name" value="WebMiner">
+		</div>
 
 		<div>
 			<label>Threads:</label>
@@ -13,28 +55,8 @@
 		</div>
 
 		<div>
-			<label>Your wallet address:</label>
-			<input id="wallet" type="text" placeholder="Your Kryptokroan SEKR address" value="SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR">
-		</div>
-
-		<div>
-			<label>Pool:</label>
-			<input id="pool" type="text" placeholder="Your favourite mining pool" value="pool.kryptokrona.se">
-		</div>
-
-		<div>
-			<label>Port:</label>
-			<input id="port" type="number" placeholder="Your pools port" value="11898">
-		</div>
-
-		<div>
 			<label>Mining speed:</label>
 			<input id="speed" type="number" placeholder="Mining speed in percent" min="1" max="100" value="100">
-		</div>
-
-		<div>
-			<label>Worker name:</label>
-			<input id="workerName" type="text" placeholder="Your worker name" value="WebMiner">
 		</div>
 
 
