@@ -1,92 +1,115 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<title>Kryptokrona-Webminer</title>
-		<style>
-			body {
-				background: black;
-				color: white;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-			}
 
-			button {
-				background: black;
-				color: white;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-			}
+<head>
+	<meta charset="utf-8">
+	<title>Kryptokrona-Webminer</title>
+	<style>
+		body {
+			background: black;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
 
-			
-			
-			/* body */
-		</style>
-	</head>
+		.input {
+			padding-top: 100px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
 
-	<body>
-		<div>
-			<label>Your wallet address:</label><br>
-			<input id="wallet" type="text" placeholder="Your Kryptokroan SEKR address" value="SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR">
-		</div>
+		button {
+			background: black;
+			color: white;
+			display: flex;
+			border: 1px solid white;
+			padding-right: 1rem;
+			padding-left: 1rem;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
 
-		<div>
-			<label>Pool:</label><br>
-			<input id="pool" type="text" placeholder="Your favourite mining pool" value="pool.kryptokrona.se">
-		</div>
+		.buttons {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+	</style>
+</head>
 
-		<div>
-			<label>Port:</label><br>
-			<input id="port" type="number" placeholder="Your pools port" value="11898">
-		</div>
+<body>
 
-		<div>
-			<label>Worker name:</label><br>
-			<input id="workerName" type="text" placeholder="Your worker name" value="WebMiner">
-		</div>
+	<div class="input">
+	<div>
+		<label>Your wallet address:</label>
+		<input id="wallet" type="text" placeholder="Your Kryptokroan SEKR address"
+			value="SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR">
+	</div>
 
-		<div>
-			<label>Threads:</label>
-			<input id="threads" type="number" min="1" max="64" value="4" placeholder="Number of threads">
-		</div>
+	<div>
+		<label>Pool:</label>
+		<input id="pool" type="text" placeholder="Your favourite mining pool" value="pool.kryptokrona.se">
+	</div>
 
-		<div>
-			<label>Mining speed:</label>
-			<input id="speed" type="number" placeholder="Mining speed in percent" min="1" max="100" value="100">
-		</div>
+	<div>
+		<label>Port:</label>
+		<input id="port" type="number" placeholder="Your pools port" value="11898">
+	</div>
+
+	<div>
+		<label>Worker name:</label>
+		<input id="workerName" type="text" placeholder="Your worker name" value="WebMiner">
+	</div>
+
+	<div>
+		<label>Threads:</label>
+		<input id="threads" type="number" min="1" max="64" value="4" placeholder="Number of threads">
+	</div>
+
+	<div>
+		<label>Mining speed:</label>
+		<input id="speed" type="number" placeholder="Mining speed in percent" min="1" max="100" value="100">
+	</div>
+</div>
+
+	<div class="buttons">
 
 
 		<button onclick="updateValues();miner.start()"> Start </button>
 		<button onclick="miner.stop()"> Stop </button>
 
+	</div>
 
-		<script src='kryptokronaminer.js'></script>
-		<script>
-			const config = {
-				pool: "pool.kryptokrona.se",	// pool url
-				port: 11898,	// pool port
-				wallet: "SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR", // your wallet address
-				speed: 100,		// cpu speed/usage in %
-				threads: 4,		// number of threads using for mining
-				workerName: "WebMiner"	// the miner name also knows as 'password' for the pool, default 'x'
+
+	<script src='kryptokronaminer.js'></script>
+	<script>
+		const config = {
+			pool: "pool.kryptokrona.se",	// pool url
+			port: 11898,	// pool port
+			wallet: "SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR", // your wallet address
+			speed: 100,		// cpu speed/usage in %
+			threads: 4,		// number of threads using for mining
+			workerName: "WebMiner"	// the miner name also knows as 'password' for the pool, default 'x'
+		}
+		const miner = new kryptokronaMiner(config);
+		console.log(miner.dump());
+
+		miner.on("report", function (rep) {
+			console.log(rep);
+		});
+
+		function updateValues() { // updates values entered by user
+			for (let i in config) {
+				config[i] = document.getElementById(i).value;
+				miner[i] = document.getElementById(i).value;
 			}
-			const miner = new kryptokronaMiner(config);
-			console.log(miner.dump());
+		}
+	</script>
+</body>
 
-			miner.on("report", function(rep) {
-				console.log(rep);
-			});
-
-			function updateValues() { // updates values entered by user
-				for (let i in config) {
-					config[i] = document.getElementById(i).value;
-					miner[i] = document.getElementById(i).value;
-				}
-			}
-		</script>
-	</body>
 </html>
