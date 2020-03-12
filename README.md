@@ -1,20 +1,18 @@
 # webturtle
-A web miner for TurtleCoin
-
-#### Working demo: [webturtle.de.cool](https://webturtle.de.cool)
+A web miner for Kryptokrona
 
 ## How to include to your website
 In order to implement the miner to your website you have to do the following, easy steps:
 
  - Download our script and add it to your website  
-  `<script src='turtleminer.js'></script>`  
+  `<script src='kryptokronaminer.js'></script>`  
 
  - Edit the configuration
   ```
 const config = {
-	pool: "trtl.pool.mine2gether.com",	// pool url
-	port: 2225,	// pool port
-	wallet: "TRTLv198neLLCadgT3rzAnepD9aDf4MMC33MDMbkkELJcRAiZyH35fL3qG7xjJDSUCGCRJFWwxyvNDCwxy8kVpbFTsx654w8PEJ", // your wallet address
+	pool: "pool.kryptokrona.se",	// pool url
+	port: 11898,	// pool port
+	wallet: "SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR", // your wallet address
 	speed: 100,		// cpu speed/usage in %
 	threads: 4,		// number of threads using for mining
 	workerName: "WebMiner"	// the miner name also knows as 'password' for the pool, default 'x'
@@ -22,7 +20,7 @@ const config = {
   ```
 
   - Initialize a new miner instance  
-  `const miner = new TurtleMiner(minerConfig);`
+  `const miner = new KryptokronaMiner(minerConfig);`
 
   - Start mining whenever you want:  
   `miner.start();`
