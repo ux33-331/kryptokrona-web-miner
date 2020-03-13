@@ -5,13 +5,11 @@
 	<meta charset="utf-8">
 	<title>Kryptokrona-Webminer</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src='js/kryptokronaminer.js'></script>
-	<script src='js/config.js'></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
-	<header class="headerlogo">
-		<img src="img/icon.png" alt="kryptokrona-logo">
+	<header class="huvud">
 		<br>
 		<h1>Kryptokrona WebMiner</h1>
 		<br>
@@ -19,44 +17,55 @@
 	</header>
 	<div class="wrapper">
 
-	<div class="input">
-		<div>
-			<label>Your wallet address:</label>
-			<input id="wallet" type="text" placeholder="Your Kryptokroan SEKR address"
-				value="SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR">
-		</div>
+		<div class="input">
+			<div>
+				<label>Your SEKR address:</label>
+				<input id="wallet" type="text" placeholder="Wallet address"
+					value="SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR">
+			</div>
 
-		<div>
-			<label>Pool:</label>
-			<input id="pool" type="text" placeholder="Your favourite mining pool" value="pool.kryptokrona.se">
-		</div>
+			<div>
+				<label>Pool of choice:</label>
+				<input id="pool" type="text" placeholder="Your favourite mining pool" value="pool.kryptokrona.se">
+			</div>
 
-		<div>
-			<label>Port:</label>
-			<input id="port" type="number" placeholder="Your pools port" value="11898">
-		</div>
+			<div>
+				<label>Port number:</label>
+				<input id="port" type="number" placeholder="Your pools port" value="3333">
+			</div>
 
-		<div>
-			<label>Worker name:</label>
-			<input id="workerName" type="text" placeholder="Your worker name" value="WebMiner">
-		</div>
+			<div>
+				<label>Worker name:</label>
+				<input id="workerName" type="text" placeholder="Your worker name" value="WebMiner">
+			</div>
 
-		<div>
-			<label>Threads:</label>
-			<input id="threads" type="number" min="1" max="64" value="4" placeholder="Number of threads">
-		</div>
+			<div>
+				<label>Threads:</label>
+				<input id="threads" type="number" min="1" max="64" value="4" placeholder="Number of threads">
+			</div>
 
-		<div>
-			<label>Mining speed:</label>
-			<input id="speed" type="number" placeholder="Mining speed in percent" min="1" max="100" value="100">
+			<div>
+				<label>Mining speed:</label>
+				<input id="speed" type="number" placeholder="Mining speed in percent" min="1" max="100" value="100">
+			</div>
+		</div>
+		<br>
+		<div class="buttons">
+			<button onclick="updateValues();miner.start()"> Start mining! </button>
+			<button onclick="miner.stop();"> Stop mining! </button>
 		</div>
 	</div>
 	<br>
-	<div class="buttons">
-		<button onclick="updateValues();miner.start();alert('Miner started')"> Start mining! </button>
-		<button onclick="miner.stop();alert('Miner finished')"> Stop mining! </button>
+	<div class="footer-buttons">
+		<input type=button onClick="parent.location='http://explorer.kryptokrona.se/'" value='Explorer'>
+		<input type=button onClick="parent.location='http://pool.kryptokrona.se/'" value='Pool'>
+		<input type=button onClick="parent.location='https://kryptokrona.se/paperwallet/'" value='Get paper wallet!'>
 	</div>
-</div>
+	<br>
+	<br>
+	<img src="img/icon.png" alt="kryptokrona-logo">
+	<script src='js/kryptokronaminer.js'></script>
+	<script src='js/config.js'></script>
 </body>
 
 </html>
