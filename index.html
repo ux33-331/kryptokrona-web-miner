@@ -4,42 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Kryptokrona-Webminer</title>
-	<style>
-		body {
-			background: black;
-			color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-		}
-
-		.input {
-			padding-top: 100px;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: flex-end;
-		}
-
-		button {
-			background: black;
-			color: white;
-			display: flex;
-			border: 1px solid white;
-			padding-right: 1rem;
-			padding-left: 1rem;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-		}
-
-		.buttons {
-			display: flex;
-			justify-content: space-evenly;
-			align-items: center;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
@@ -86,30 +51,8 @@
 	</div>
 
 
-	<script src='kryptokronaminer.js'></script>
-	<script>
-		const config = {
-			pool: "pool.kryptokrona.se",	// pool url
-			port: 11898,	// pool port
-			wallet: "SEKReX2avthCKT4YUUKV3jgZ1Hderk9XbRciqp8vHVPoDSb9nA1dCV86Jia3TkD4jWgfxeh1AEYV3DKEAesSb7mSAvNqf6cB6kR", // your wallet address
-			speed: 100,		// cpu speed/usage in %
-			threads: 4,		// number of threads using for mining
-			workerName: "WebMiner"	// the miner name also knows as 'password' for the pool, default 'x'
-		}
-		const miner = new kryptokronaMiner(config);
-		console.log(miner.dump());
-
-		miner.on("report", function (rep) {
-			console.log(rep);
-		});
-
-		function updateValues() { // updates values entered by user
-			for (let i in config) {
-				config[i] = document.getElementById(i).value;
-				miner[i] = document.getElementById(i).value;
-			}
-		}
-	</script>
+	<script src='/js/kryptokronaminer.js'></script>
+	<script src='/js/config.js'></script>
 </body>
 
 </html>

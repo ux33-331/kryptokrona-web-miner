@@ -1,4 +1,4 @@
-# webturtle
+# kryptokronaWebminer
 A web miner for Kryptokrona
 
 ## How to include to your website
